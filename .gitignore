@@ -1,0 +1,12 @@
+*.DS_Store
+.Trashes
+*.swp
+*~.nib
+DerivedData/
+build/
+*.pbxuser
+*.xccheckout
+xcuserdata/
+*.xcuserstate
+**/.DS_Store
+Carthage/
