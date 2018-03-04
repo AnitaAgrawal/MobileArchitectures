@@ -10,7 +10,7 @@ import UIKit
 import AVFoundation
 
 class ViewController: UIViewController {
-
+    //MARK:- IBOutlets
     @IBOutlet weak var backgroundScrollView: UIScrollView!
     @IBOutlet weak var firstNameTF: UITextField!
     @IBOutlet weak var laseNameTf: UITextField!
@@ -19,17 +19,25 @@ class ViewController: UIViewController {
     @IBOutlet weak var phoneTF: UITextField!
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var profileButton: UIButton!
+    @IBOutlet weak var keyboardAccessoryView: UIToolbar!
+    
+    //MARK:- Properties
     let imageVC = UIImagePickerController()
     var userDetails: UserProfile? {
         didSet {
            updateUserProfileUI()
         }
     }
+    var activeTFTag = 0
+    var tapGest: UITapGestureRecognizer?
+    
+    //MARK:- View lift cycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         imageVC.delegate = self
-        UserProfile.getUserProfileDetails { (profileDetails, error) in
+        registerKeyboardNotification()
+        self.getUserProfileDetails { (profileDetails, error) in
             guard let profileData = profileDetails else {
                 print(error ?? "Some error occurred")
                 return
@@ -54,6 +62,7 @@ class ViewController: UIViewController {
         profileButton.setImage(image, for: .normal)
     }
     
+    //MARK:- IBAction methods
     @IBAction func submitButtonAction(_ sender: UIButton) {
         if areAllFieldsValid() {
            userDetails?.firstName = firstNameTF.text ?? ""
@@ -61,7 +70,7 @@ class ViewController: UIViewController {
             userDetails?.email = emailTF.text ?? ""
             userDetails?.phone = phoneTF.text ?? ""
             userDetails?.dateOfBirth = dobTF.text ?? ""
-            userDetails?.updateUserProfileDetails(completionHandler: { (message) in
+            self.updateUserProfileDetails(completionHandler: { (message) in
                 print(message)
             })
         }else {
@@ -81,6 +90,25 @@ class ViewController: UIViewController {
         Utility.showActionSheet(withActions: [takePhoto, uploadPhoto, cancel], title: nil)
     }
     
+    //MARK:- Keyboard Accessory button action methods
+    @IBAction func previousButtonTapped(){
+        if activeTFTag > TextFieldTypes.firstName.rawValue {
+            let viewWithTag = view.viewWithTag(activeTFTag - 1)
+            viewWithTag?.becomeFirstResponder()
+        }
+    }
+    @IBAction func nextButtonTapped(){
+        if activeTFTag < TextFieldTypes.phoneNumberTF.rawValue {
+            let viewWithTag = view.viewWithTag(activeTFTag + 1)
+            viewWithTag?.becomeFirstResponder()
+        } else {
+            view.endEditing(true)
+        }
+    }
+    @IBAction func doneButtonTapped(){
+        view.endEditing(true)
+    }
+    
     //MARK:- Text fields validations
     func areAllFieldsValid()-> Bool{
         if (emailTF.text?.isEmpty ?? false) || (phoneTF.text?.isEmpty ?? false) || (firstNameTF.text?.isEmpty ?? false) || (laseNameTf.text?.isEmpty ?? false) || (dobTF.text?.isEmpty ?? false) || !(emailTF.text?.isValidEmailID() ?? true) || !(phoneTF.text?.isValidPhoneNumber() ?? true) {
@@ -88,6 +116,8 @@ class ViewController: UIViewController {
         }
         return true
     }
+    
+    //MARK:- Profile pic selection methods
     func takePhotoAction() {
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             let authStatus = AVCaptureDevice.authorizationStatus(for: AVMediaType.video)
@@ -114,7 +144,7 @@ class ViewController: UIViewController {
     
     //MARK:- Camera related permissions
     func alertPromptToAllowCameraAccessViaSettings() {
-        let alert = UIAlertController(title: NSLocalizedString("We Would Like To Access the Camera", comment: "Allow camera alert title"), message: NSLocalizedString("Please grant permission to use the Camera so that you can update profile pic. Please navigate to Settings -> Privacy -> Camera -> MobileArchitectureMVC and turn switch on.", comment: "Allow camera alert message"), preferredStyle: .alert )
+        let alert = UIAlertController(title: NSLocalizedString("We Would Like To Access the Camera", comment: "Allow camera alert title"), message: NSLocalizedString("Please grant permission to use the Camera so that you can update profile pic. Please navigate to Settings -> Privacy -> Camera -> MobileArchitectures and turn switch on.", comment: "Allow camera alert message"), preferredStyle: .alert )
         alert.addAction(UIAlertAction(title: "Open Settings", style: .default) { alert in
             self.openSettingsAction()
         })
@@ -136,6 +166,30 @@ class ViewController: UIViewController {
                 }
             })
         }
+    }
+}
+
+//MARK:- API Calls
+extension ViewController {
+    func getUserProfileDetails(completionHandler: @escaping (_ profileDetails: UserProfile?, _ error: String?) -> Void) {
+        let filePath = Utility.getDocumentsDirectory().appendingPathComponent("UserDetails.plist")
+        if FileManager.default.fileExists(atPath: filePath), let dictionary = NSDictionary(contentsOfFile: filePath) as? Dictionary<String, Any> {
+            let userDetails = UserProfile(profileDic: dictionary)
+            completionHandler(userDetails, nil)
+        }else {
+            guard let file = Bundle.main.path(forResource: "UserDetails", ofType: "plist"), let dictionary = NSDictionary(contentsOfFile: file) as? Dictionary<String, Any> else {return completionHandler(nil, "User is not found.")}
+            let userDetails = UserProfile(profileDic: dictionary)
+            completionHandler(userDetails, nil)
+        }
+    }
+    
+    func updateUserProfileDetails(completionHandler: @escaping (_ message: String) -> Void) {
+        let dictionary = userDetails?.getDictionary()
+        
+        let filePath = Utility.getDocumentsDirectory().appendingPathComponent("UserDetails.plist")
+        let success = dictionary?.write(toFile: filePath, atomically: true)
+        print(success ?? false)
+        completionHandler( "User profile updated successfully.")
     }
 }
 
@@ -169,7 +223,11 @@ enum TextFieldType : Int{
 }
 
 extension ViewController: UITextFieldDelegate {
-    // textField validation
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        textField.inputAccessoryView = keyboardAccessoryView
+        activeTFTag = textField.tag
+        return true
+    }
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         switch textField.tag {
         case TextFieldType.phoneNumberTF.rawValue:
@@ -194,13 +252,45 @@ extension ViewController: UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
+        nextButtonTapped()
         return true
     }
     
     func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason) {
         if textField.tag == TextFieldType.phoneNumberTF.rawValue {
             textField.text = textField.text?.formatPhoneNumber()
+        }
+    }
+}
+
+//MARK:- Keyboard handling methods
+extension ViewController {
+    func registerKeyboardNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow(notification:)), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    @objc private func keyboardDidShow(notification : NSNotification) {
+        if let kbSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            let contentInset = UIEdgeInsetsMake(0, 0, kbSize.height, 0)
+            backgroundScrollView.contentInset = contentInset
+        }
+        dismissKeyboardGesture()
+    }
+    @objc private func keyboardWillHide(notification : NSNotification) {
+        backgroundScrollView.contentInset = UIEdgeInsets.zero
+    }
+    
+    private func dismissKeyboardGesture() {
+        if tapGest == nil {
+            tapGest = UITapGestureRecognizer.init(target: self, action: #selector(dismissKeyboard))
+        }
+        tapGest?.cancelsTouchesInView = false
+        view.addGestureRecognizer(tapGest!)
+    }
+    @objc private func dismissKeyboard() {
+        view.endEditing(true)
+        if tapGest != nil {
+            view.removeGestureRecognizer(tapGest!)
         }
     }
 }
