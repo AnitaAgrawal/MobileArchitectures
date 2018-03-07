@@ -57,7 +57,7 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="345" height="17"/>
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits"/>
+                                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" returnKeyType="next"/>
                                                                 <connections>
                                                                     <outlet property="delegate" destination="BYZ-38-t0r" id="u8J-UW-yNs"/>
                                                                 </connections>
@@ -81,7 +81,7 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="345" height="17"/>
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits"/>
+                                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" returnKeyType="next"/>
                                                                 <connections>
                                                                     <outlet property="delegate" destination="BYZ-38-t0r" id="Nhz-Ms-BR5"/>
                                                                 </connections>
@@ -129,7 +129,7 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="345" height="17"/>
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits"/>
+                                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next"/>
                                                                 <connections>
                                                                     <outlet property="delegate" destination="BYZ-38-t0r" id="xal-Id-XQE"/>
                                                                 </connections>
@@ -153,7 +153,7 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="345" height="17"/>
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits"/>
+                                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="phonePad"/>
                                                                 <connections>
                                                                     <outlet property="delegate" destination="BYZ-38-t0r" id="JaJ-HS-xLg"/>
                                                                 </connections>
@@ -482,6 +482,16 @@
                                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                             </button>
+                                            <datePicker clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="wVh-jC-CF1">
+                                                <rect key="frame" x="0.0" y="355" width="375" height="216"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <date key="date" timeIntervalSinceReferenceDate="541859150.50641406">
+                                                    <!--2018-03-04 12:25:50 +0000-->
+                                                </date>
+                                                <date key="minimumDate" timeIntervalSinceReferenceDate="-978267600">
+                                                    <!--1970-01-01 11:00:00 +0000-->
+                                                </date>
+                                            </datePicker>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -491,9 +501,12 @@
                                             <constraint firstItem="GNm-AS-cM3" firstAttribute="top" secondItem="dLB-d6-oeI" secondAttribute="bottom" constant="70" id="RQa-v6-YU4"/>
                                             <constraint firstAttribute="trailing" secondItem="z0p-u0-9If" secondAttribute="trailing" constant="20" id="WCk-DD-AtR"/>
                                             <constraint firstItem="GNm-AS-cM3" firstAttribute="leading" secondItem="YF5-jp-x5d" secondAttribute="leading" constant="15" id="XpJ-4Q-eZ2"/>
+                                            <constraint firstItem="wVh-jC-CF1" firstAttribute="leading" secondItem="YF5-jp-x5d" secondAttribute="leading" id="ijs-OT-npN"/>
                                             <constraint firstItem="dLB-d6-oeI" firstAttribute="top" secondItem="YF5-jp-x5d" secondAttribute="top" constant="40" id="jFC-x4-bcF"/>
                                             <constraint firstAttribute="trailing" secondItem="GNm-AS-cM3" secondAttribute="trailing" constant="15" id="nlL-gr-MXY"/>
                                             <constraint firstItem="z0p-u0-9If" firstAttribute="top" secondItem="GNm-AS-cM3" secondAttribute="bottom" constant="51" id="rq6-cK-l1t"/>
+                                            <constraint firstAttribute="bottom" secondItem="wVh-jC-CF1" secondAttribute="bottom" id="wb0-Tx-2Vr"/>
+                                            <constraint firstAttribute="trailing" secondItem="wVh-jC-CF1" secondAttribute="trailing" id="zDT-YA-Qy2"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -575,6 +588,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Gmg-V9-G7x" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="J5y-L2-OiY">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>

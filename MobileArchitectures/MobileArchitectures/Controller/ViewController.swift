@@ -30,6 +30,7 @@ class ViewController: UIViewController {
     }
     var activeTFTag = 0
     var tapGest: UITapGestureRecognizer?
+    var datePicker: UIDatePicker!
     
     //MARK:- View lift cycle methods
     override func viewDidLoad() {
@@ -63,6 +64,7 @@ class ViewController: UIViewController {
     }
     
     //MARK:- IBAction methods
+    
     @IBAction func submitButtonAction(_ sender: UIButton) {
         if areAllFieldsValid() {
            userDetails?.firstName = firstNameTF.text ?? ""
@@ -224,7 +226,11 @@ enum TextFieldType : Int{
 
 extension ViewController: UITextFieldDelegate {
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        textField.inputAccessoryView = keyboardAccessoryView
+        if textField.tag == TextFieldTypes.dateOfBirth.rawValue {
+            self.pickUpDate(textField)
+        }else {
+            textField.inputAccessoryView = keyboardAccessoryView
+        }
         activeTFTag = textField.tag
         return true
     }
@@ -260,6 +266,47 @@ extension ViewController: UITextFieldDelegate {
         if textField.tag == TextFieldType.phoneNumberTF.rawValue {
             textField.text = textField.text?.formatPhoneNumber()
         }
+    }
+}
+
+//MARK:- Date Picker
+
+extension ViewController {
+    func pickUpDate(_ textField : UITextField){
+        
+        // DatePicker
+        self.datePicker = UIDatePicker(frame:CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 216))
+        self.datePicker.backgroundColor = UIColor.white
+        self.datePicker.datePickerMode = UIDatePickerMode.date
+        textField.inputView = self.datePicker
+        
+        // ToolBar
+        let toolBar = UIToolbar()
+        toolBar.barStyle = .default
+//        toolBar.isTranslucent = true
+//        toolBar.tintColor = UIColor(red: 92/255, green: 216/255, blue: 255/255, alpha: 1)
+        toolBar.sizeToFit()
+        
+        // Adding Button ToolBar
+        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(ViewController.doneClick))
+        let prevButton = UIBarButtonItem(title: "Prev", style: .plain, target: self, action: #selector(ViewController.previousButtonTapped))
+        let nextButton = UIBarButtonItem(title: "Next", style: .plain, target: self, action: #selector(ViewController.nextButtonTapped))
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(ViewController.cancelClick))
+        toolBar.setItems([prevButton, nextButton, cancelButton, spaceButton, doneButton], animated: false)
+        toolBar.isUserInteractionEnabled = true
+        textField.inputAccessoryView = toolBar
+        
+    }
+    @objc func doneClick() {
+        let dateFormatter1 = DateFormatter()
+        dateFormatter1.dateStyle = .medium
+//        dateFormatter1.timeStyle = .none
+        dobTF.text = dateFormatter1.string(from: datePicker.date)
+        dobTF.resignFirstResponder()
+    }
+    @objc func cancelClick() {
+        dobTF.resignFirstResponder()
     }
 }
 
