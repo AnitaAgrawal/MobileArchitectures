@@ -27,7 +27,7 @@
                                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m8d-eJ-hPW">
                                                 <rect key="frame" x="137" y="40" width="100" height="100"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iD9-Th-GHP">
+                                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iD9-Th-GHP">
                                                         <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="100" id="ReZ-qi-FYa"/>
@@ -324,7 +324,7 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="345" height="17"/>
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits"/>
+                                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" returnKeyType="next"/>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="maxLength">
                                                                         <integer key="value" value="50"/>
@@ -332,7 +332,6 @@
                                                                 </userDefinedRuntimeAttributes>
                                                                 <connections>
                                                                     <outlet property="delegate" destination="GNm-AS-cM3" id="v7P-wc-ncI"/>
-                                                                    <outlet property="keyboardAccessoryView" destination="rha-hf-d8N" id="ql8-Di-kIf"/>
                                                                 </connections>
                                                             </textField>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qBf-pp-mW3">
@@ -354,7 +353,7 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="345" height="17"/>
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits"/>
+                                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" returnKeyType="next"/>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="maxLength">
                                                                         <integer key="value" value="50"/>
@@ -362,7 +361,6 @@
                                                                 </userDefinedRuntimeAttributes>
                                                                 <connections>
                                                                     <outlet property="delegate" destination="GNm-AS-cM3" id="nC1-so-xGM"/>
-                                                                    <outlet property="keyboardAccessoryView" destination="rha-hf-d8N" id="23C-nS-sfH"/>
                                                                 </connections>
                                                             </textField>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mYA-eN-N2Q">
@@ -387,7 +385,6 @@
                                                                 <textInputTraits key="textInputTraits"/>
                                                                 <connections>
                                                                     <outlet property="delegate" destination="GNm-AS-cM3" id="3LX-U6-gX0"/>
-                                                                    <outlet property="keyboardAccessoryView" destination="rha-hf-d8N" id="Ym9-e2-gXe"/>
                                                                 </connections>
                                                             </textField>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Drq-DL-1oI">
@@ -409,13 +406,12 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="345" height="17"/>
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits"/>
+                                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next"/>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="string" keyPath="allowedCharacters" value="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890.%_@+-"/>
                                                                 </userDefinedRuntimeAttributes>
                                                                 <connections>
                                                                     <outlet property="delegate" destination="GNm-AS-cM3" id="DKd-wa-ZoX"/>
-                                                                    <outlet property="keyboardAccessoryView" destination="rha-hf-d8N" id="mL9-Ju-438"/>
                                                                 </connections>
                                                             </textField>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j3z-tW-iN6">
@@ -437,7 +433,7 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="345" height="17"/>
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits"/>
+                                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="phonePad"/>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="maxLength">
                                                                         <integer key="value" value="12"/>
@@ -447,7 +443,6 @@
                                                                 </userDefinedRuntimeAttributes>
                                                                 <connections>
                                                                     <outlet property="delegate" destination="GNm-AS-cM3" id="zMm-Wk-JTa"/>
-                                                                    <outlet property="keyboardAccessoryView" destination="rha-hf-d8N" id="J0P-RK-9vU"/>
                                                                 </connections>
                                                             </textField>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oqw-a5-dK8">
@@ -467,6 +462,7 @@
                                                     <outlet property="dobTF" destination="Oxn-dd-f3L" id="RgY-Za-9k8"/>
                                                     <outlet property="emailTF" destination="Uge-m0-SCN" id="CL4-tk-wq8"/>
                                                     <outlet property="firstNameTF" destination="Zw9-qS-Psb" id="Hbf-eB-9Xa"/>
+                                                    <outlet property="keyboardAccessoryView" destination="rha-hf-d8N" id="5fA-r7-B2d"/>
                                                     <outlet property="laseNameTf" destination="kGC-Hc-JHz" id="8NJ-R3-u5m"/>
                                                     <outlet property="phoneTF" destination="dIp-9E-wlt" id="w4d-ga-v5Y"/>
                                                 </connections>
@@ -482,16 +478,6 @@
                                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                             </button>
-                                            <datePicker clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="wVh-jC-CF1">
-                                                <rect key="frame" x="0.0" y="355" width="375" height="216"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <date key="date" timeIntervalSinceReferenceDate="541859150.50641406">
-                                                    <!--2018-03-04 12:25:50 +0000-->
-                                                </date>
-                                                <date key="minimumDate" timeIntervalSinceReferenceDate="-978267600">
-                                                    <!--1970-01-01 11:00:00 +0000-->
-                                                </date>
-                                            </datePicker>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -501,12 +487,9 @@
                                             <constraint firstItem="GNm-AS-cM3" firstAttribute="top" secondItem="dLB-d6-oeI" secondAttribute="bottom" constant="70" id="RQa-v6-YU4"/>
                                             <constraint firstAttribute="trailing" secondItem="z0p-u0-9If" secondAttribute="trailing" constant="20" id="WCk-DD-AtR"/>
                                             <constraint firstItem="GNm-AS-cM3" firstAttribute="leading" secondItem="YF5-jp-x5d" secondAttribute="leading" constant="15" id="XpJ-4Q-eZ2"/>
-                                            <constraint firstItem="wVh-jC-CF1" firstAttribute="leading" secondItem="YF5-jp-x5d" secondAttribute="leading" id="ijs-OT-npN"/>
                                             <constraint firstItem="dLB-d6-oeI" firstAttribute="top" secondItem="YF5-jp-x5d" secondAttribute="top" constant="40" id="jFC-x4-bcF"/>
                                             <constraint firstAttribute="trailing" secondItem="GNm-AS-cM3" secondAttribute="trailing" constant="15" id="nlL-gr-MXY"/>
                                             <constraint firstItem="z0p-u0-9If" firstAttribute="top" secondItem="GNm-AS-cM3" secondAttribute="bottom" constant="51" id="rq6-cK-l1t"/>
-                                            <constraint firstAttribute="bottom" secondItem="wVh-jC-CF1" secondAttribute="bottom" id="wb0-Tx-2Vr"/>
-                                            <constraint firstAttribute="trailing" secondItem="wVh-jC-CF1" secondAttribute="trailing" id="zDT-YA-Qy2"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -550,6 +533,11 @@
                         <barButtonItem title="Next" id="zvB-yH-uuq">
                             <connections>
                                 <action selector="nextButtonTapped" destination="GNm-AS-cM3" id="s7V-uf-flG"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem title="Cancel" id="dcg-dl-qMN">
+                            <connections>
+                                <action selector="cancelButtonTapped" destination="GNm-AS-cM3" id="VHq-12-u4G"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem systemItem="flexibleSpace" id="z7n-qz-dQn"/>

@@ -43,7 +43,7 @@ class ProfileImprovedMVC: BaseViewController, KeyboardOnScrollView {
         contactInfoView.firstNameTF.text = profileData.firstName
         contactInfoView.laseNameTf.text = profileData.lastName
         contactInfoView.emailTF.text = profileData.email
-        contactInfoView.phoneTF.text = profileData.phone
+        contactInfoView.phoneTF.text = profileData.phone.formatPhoneNumber()
         contactInfoView.dobTF.text = profileData.dateOfBirth
         profileBGView.profileURL = profileData.pictureUrl
     }

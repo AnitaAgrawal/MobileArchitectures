@@ -32,7 +32,7 @@ class ViewController: UIViewController {
     var tapGest: UITapGestureRecognizer?
     var datePicker: UIDatePicker!
     
-    //MARK:- View lift cycle methods
+    //MARK:- View life cycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -45,6 +45,7 @@ class ViewController: UIViewController {
             }
             self.userDetails = profileData
         }
+        profileButton.layer.cornerRadius = profileButton.frame.width/2
     }
 
     override func didReceiveMemoryWarning() {
@@ -57,7 +58,7 @@ class ViewController: UIViewController {
         firstNameTF.text = profileData.firstName
         laseNameTf.text = profileData.lastName
         emailTF.text = profileData.email
-        phoneTF.text = profileData.phone
+        phoneTF.text = profileData.phone.formatPhoneNumber()
         dobTF.text = profileData.dateOfBirth
         guard let image = UIImage(contentsOfFile: Utility.getDocumentsDirectory().appendingPathComponent(profileData.pictureUrl)) else {return}
         profileButton.setImage(image, for: .normal)
@@ -273,7 +274,6 @@ extension ViewController: UITextFieldDelegate {
 
 extension ViewController {
     func pickUpDate(_ textField : UITextField){
-        
         // DatePicker
         self.datePicker = UIDatePicker(frame:CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 216))
         self.datePicker.backgroundColor = UIColor.white
@@ -283,8 +283,6 @@ extension ViewController {
         // ToolBar
         let toolBar = UIToolbar()
         toolBar.barStyle = .default
-//        toolBar.isTranslucent = true
-//        toolBar.tintColor = UIColor(red: 92/255, green: 216/255, blue: 255/255, alpha: 1)
         toolBar.sizeToFit()
         
         // Adding Button ToolBar
@@ -301,7 +299,7 @@ extension ViewController {
     @objc func doneClick() {
         let dateFormatter1 = DateFormatter()
         dateFormatter1.dateStyle = .medium
-//        dateFormatter1.timeStyle = .none
+        dateFormatter1.dateFormat = "dd.MM.yyyy"
         dobTF.text = dateFormatter1.string(from: datePicker.date)
         dobTF.resignFirstResponder()
     }

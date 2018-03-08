@@ -15,7 +15,9 @@ class ContactInfoView: UIStackView {
     @IBOutlet weak var dobTF: CustomTextField!
     @IBOutlet weak var emailTF: CustomTextField!
     @IBOutlet weak var phoneTF: CustomTextField!
+    @IBOutlet weak var keyboardAccessoryView: UIToolbar!
     var activeTFTag = 0
+    var datePicker: UIDatePicker!
     
     //MARK:- Keyboard Accessory button actions
     @IBAction func previousButtonTapped(){
@@ -33,9 +35,17 @@ class ContactInfoView: UIStackView {
         }
     }
     @IBAction func doneButtonTapped(){
+        if activeTFTag == TextFieldTypes.dateOfBirth.rawValue {
+            let dateFormatter1 = DateFormatter()
+            dateFormatter1.dateStyle = .medium
+            dateFormatter1.dateFormat = "dd.MM.yyyy"
+            dobTF.text = dateFormatter1.string(from: datePicker.date)
+        }
         endEditing(true)
     }
-    
+    @IBAction func cancelButtonTapped(){
+        endEditing(true)
+ }
     //MARK:- Text fields validations
     func areAllFieldsValid()-> Bool{
         if (emailTF.text?.isEmpty ?? false) || (phoneTF.text?.isEmpty ?? false) || (firstNameTF.text?.isEmpty ?? false) || (laseNameTf.text?.isEmpty ?? false) || (dobTF.text?.isEmpty ?? false) || !(emailTF.text?.isValidEmailID() ?? true) || !(phoneTF.text?.isValidPhoneNumber() ?? true) {
@@ -43,10 +53,24 @@ class ContactInfoView: UIStackView {
         }
         return true
     }
+    func pickUpDate(_ textField : UITextField){
+        // DatePicker
+        self.datePicker = UIDatePicker(frame:CGRect(x: 0, y: 0, width: UIApplication.shared.keyWindow?.frame.width ?? 0, height: 216))
+        self.datePicker.backgroundColor = UIColor.white
+        self.datePicker.datePickerMode = UIDatePickerMode.date
+        textField.inputView = self.datePicker
+    }
 }
 
 extension ContactInfoView: UITextFieldDelegate {
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        if textField.tag == TextFieldTypes.dateOfBirth.rawValue {
+            keyboardAccessoryView.items![2].title = "Cancel"
+            self.pickUpDate(textField)
+        }else {
+            keyboardAccessoryView.items![2].title = ""
+        }
+        textField.inputAccessoryView = keyboardAccessoryView
         activeTFTag = textField.tag
         return true
     }

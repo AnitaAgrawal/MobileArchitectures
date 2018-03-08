@@ -21,13 +21,9 @@ enum TextFieldTypes: Int {
     @IBInspectable var maxLength : Int = 0
     @IBInspectable var ignoredCharacter : String = ""
     @IBInspectable var allowedCharacters : String?
-    @IBOutlet weak var keyboardAccessoryView: UIToolbar!
+    
     var stringValue : String {return text ?? ""}
     var filteredString : String? {
         return stringValue.components(separatedBy: CharacterSet(charactersIn: ignoredCharacter)).joined()
     }
-    override func awakeFromNib() {
-        self.inputAccessoryView = keyboardAccessoryView
-    }
-
 }
