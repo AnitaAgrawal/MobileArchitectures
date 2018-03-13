@@ -331,6 +331,7 @@
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
                                                                 <connections>
+                                                                    <action selector="textFieldValueChanged:" destination="GNm-AS-cM3" eventType="editingDidEnd" id="hiP-o8-Ov5"/>
                                                                     <outlet property="delegate" destination="GNm-AS-cM3" id="v7P-wc-ncI"/>
                                                                 </connections>
                                                             </textField>
@@ -360,6 +361,7 @@
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
                                                                 <connections>
+                                                                    <action selector="textFieldValueChanged:" destination="GNm-AS-cM3" eventType="editingDidEnd" id="2vs-YK-NdI"/>
                                                                     <outlet property="delegate" destination="GNm-AS-cM3" id="nC1-so-xGM"/>
                                                                 </connections>
                                                             </textField>
@@ -384,6 +386,7 @@
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                                 <connections>
+                                                                    <action selector="textFieldValueChanged:" destination="GNm-AS-cM3" eventType="editingDidEnd" id="aVV-0n-4H7"/>
                                                                     <outlet property="delegate" destination="GNm-AS-cM3" id="3LX-U6-gX0"/>
                                                                 </connections>
                                                             </textField>
@@ -411,6 +414,7 @@
                                                                     <userDefinedRuntimeAttribute type="string" keyPath="allowedCharacters" value="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890.%_@+-"/>
                                                                 </userDefinedRuntimeAttributes>
                                                                 <connections>
+                                                                    <action selector="textFieldValueChanged:" destination="GNm-AS-cM3" eventType="editingDidEnd" id="GBn-e0-Er7"/>
                                                                     <outlet property="delegate" destination="GNm-AS-cM3" id="DKd-wa-ZoX"/>
                                                                 </connections>
                                                             </textField>
@@ -442,6 +446,7 @@
                                                                     <userDefinedRuntimeAttribute type="string" keyPath="allowedCharacters" value="1234567890"/>
                                                                 </userDefinedRuntimeAttributes>
                                                                 <connections>
+                                                                    <action selector="textFieldValueChanged:" destination="GNm-AS-cM3" eventType="editingDidEnd" id="uUk-CG-tHT"/>
                                                                     <outlet property="delegate" destination="GNm-AS-cM3" id="zMm-Wk-JTa"/>
                                                                 </connections>
                                                             </textField>

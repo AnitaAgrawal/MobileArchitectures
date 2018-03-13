@@ -18,6 +18,16 @@ class ContactInfoView: UIStackView {
     @IBOutlet weak var keyboardAccessoryView: UIToolbar!
     var activeTFTag = 0
     var datePicker: UIDatePicker!
+    var contactDetails: ContactInfoProtocol? {
+        didSet {
+            guard let profileData = contactDetails else { return }
+            firstNameTF.text = profileData.firstName
+            laseNameTf.text = profileData.lastName
+            emailTF.text = profileData.emailText
+            phoneTF.text = profileData.phoneText.formatPhoneNumber()
+            dobTF.text = profileData.dateOfBirth
+        }
+    }
     
     //MARK:- Keyboard Accessory button actions
     @IBAction func previousButtonTapped(){
@@ -52,6 +62,13 @@ class ContactInfoView: UIStackView {
             return false
         }
         return true
+    }
+    @IBAction func textFieldValueChanged(_ sender: CustomTextField) {
+        contactDetails?.firstName = firstNameTF.text ?? ""
+        contactDetails?.lastName = laseNameTf.text ?? ""
+        contactDetails?.emailText = emailTF.text ?? ""
+        contactDetails?.phoneText = phoneTF.text ?? ""
+        contactDetails?.dateOfBirth = dobTF.text ?? ""
     }
     func pickUpDate(_ textField : UITextField){
         // DatePicker

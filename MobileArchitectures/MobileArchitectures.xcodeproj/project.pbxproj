@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		082547C320582CB500E01CE9 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082547C220582CB500E01CE9 /* ProfileViewModel.swift */; };
+		082547C5205846CA00E01CE9 /* ProfileMVVMViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082547C4205846CA00E01CE9 /* ProfileMVVMViewController.swift */; };
 		08299C75204ABD5B000258B3 /* KeyboardHandlingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08299C74204ABD5B000258B3 /* KeyboardHandlingManager.swift */; };
 		08299C77204AC47B000258B3 /* ProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08299C76204AC47B000258B3 /* ProfileImageView.swift */; };
 		08299C79204AFB6B000258B3 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08299C78204AFB6B000258B3 /* BaseViewController.swift */; };
@@ -43,6 +45,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		082547C220582CB500E01CE9 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		082547C4205846CA00E01CE9 /* ProfileMVVMViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileMVVMViewController.swift; sourceTree = "<group>"; };
 		08299C74204ABD5B000258B3 /* KeyboardHandlingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardHandlingManager.swift; sourceTree = "<group>"; };
 		08299C76204AC47B000258B3 /* ProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageView.swift; sourceTree = "<group>"; };
 		08299C78204AFB6B000258B3 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -92,6 +96,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		082547C120582C9B00E01CE9 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				082547C220582CB500E01CE9 /* ProfileViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		08A4E1C9204A72E500A4003C /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -125,6 +137,7 @@
 		DFD1ECC8204983BF0088FDD2 /* MobileArchitectures */ = {
 			isa = PBXGroup;
 			children = (
+				082547C120582C9B00E01CE9 /* ViewModel */,
 				DFF5F916204985A300C91E87 /* Utility.swift */,
 				08299C74204ABD5B000258B3 /* KeyboardHandlingManager.swift */,
 				DFD1ECC9204983BF0088FDD2 /* AppDelegate.swift */,
@@ -164,6 +177,7 @@
 				DFD1ECFA204984ED0088FDD2 /* ViewController.swift */,
 				08A4E1C72049B05E00A4003C /* ProfileImprovedMVC.swift */,
 				08299C78204AFB6B000258B3 /* BaseViewController.swift */,
+				082547C4205846CA00E01CE9 /* ProfileMVVMViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -311,6 +325,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				082547C5205846CA00E01CE9 /* ProfileMVVMViewController.swift in Sources */,
 				08A4E1CD204A7ACD00A4003C /* CustomTextField.swift in Sources */,
 				08299C75204ABD5B000258B3 /* KeyboardHandlingManager.swift in Sources */,
 				DFF5F917204985A300C91E87 /* Utility.swift in Sources */,
@@ -318,6 +333,7 @@
 				DFD1ECFF204984ED0088FDD2 /* UserProfileModel.swift in Sources */,
 				08299C79204AFB6B000258B3 /* BaseViewController.swift in Sources */,
 				08A4E1C82049B05E00A4003C /* ProfileImprovedMVC.swift in Sources */,
+				082547C320582CB500E01CE9 /* ProfileViewModel.swift in Sources */,
 				08299C77204AC47B000258B3 /* ProfileImageView.swift in Sources */,
 				DFD1ECCA204983BF0088FDD2 /* AppDelegate.swift in Sources */,
 				08A4E1CB204A731F00A4003C /* ContactInfoView.swift in Sources */,
