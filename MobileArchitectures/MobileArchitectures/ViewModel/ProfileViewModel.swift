@@ -25,7 +25,6 @@ protocol ContactInfoProtocol {
 }
 
 extension ContactInfoProtocol {
-    
     var areContactInfoValid: Bool {
         return isPhoneValid && isEmailValid && !firstName.isEmpty && !lastName.isEmpty && !dateOfBirth.isEmpty
     }

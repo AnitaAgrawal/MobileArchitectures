@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol ProfileImageViewProtocols {
+@objc protocol ProfileImageViewProtocols {
     func takePhotoAction()
     func uploadPhotoAction()
     func dismissPicker()
@@ -16,7 +16,7 @@ protocol ProfileImageViewProtocols {
 
 class ProfileImageView: UIView {
     @IBOutlet weak var profileButton: UIButton!
-    var delegate: ProfileImageViewProtocols?
+    @IBOutlet weak var delegate: ProfileImageViewProtocols?
     var profileURL: String = "" {
         didSet {
             if !self.profileURL.isEmpty, let image = UIImage(contentsOfFile: Utility.getDocumentsDirectory().appendingPathComponent(profileURL)) {

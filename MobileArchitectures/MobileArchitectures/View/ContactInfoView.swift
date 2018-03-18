@@ -57,17 +57,14 @@ class ContactInfoView: UIStackView {
         endEditing(true)
  }
     //MARK:- Text fields validations
-    func areAllFieldsValid()-> Bool{
-        if (emailTF.text?.isEmpty ?? false) || (phoneTF.text?.isEmpty ?? false) || (firstNameTF.text?.isEmpty ?? false) || (laseNameTf.text?.isEmpty ?? false) || (dobTF.text?.isEmpty ?? false) || !(emailTF.text?.isValidEmailID() ?? true) || !(phoneTF.text?.isValidPhoneNumber() ?? true) {
-            return false
-        }
-        return true
+    func areAllFieldsValid()-> Bool {
+       return contactDetails?.areContactInfoValid ?? false
     }
     @IBAction func textFieldValueChanged(_ sender: CustomTextField) {
         contactDetails?.firstName = firstNameTF.text ?? ""
         contactDetails?.lastName = laseNameTf.text ?? ""
         contactDetails?.emailText = emailTF.text ?? ""
-        contactDetails?.phoneText = phoneTF.text ?? ""
+        contactDetails?.phoneText = phoneTF.filteredString ?? ""
         contactDetails?.dateOfBirth = dobTF.text ?? ""
     }
     func pickUpDate(_ textField : UITextField){
@@ -114,9 +111,9 @@ extension ContactInfoView: UITextFieldDelegate {
         return true
     }
     
-    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason) {
-        if textField.tag == TextFieldTypes.phoneNumberTF.rawValue {
-            textField.text = textField.text?.formatPhoneNumber()
-        }
-    }
+//    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason) {
+//        if textField.tag == TextFieldTypes.phoneNumberTF.rawValue {
+//            textField.text = textField.text?.formatPhoneNumber()
+//        }
+//    }
 }

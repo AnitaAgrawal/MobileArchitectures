@@ -8,20 +8,31 @@
 
 import UIKit
 
-class ProfileMVVMViewController: UIViewController {
+class ProfileMVVMViewController: BaseViewController, KeyboardOnScrollView {
     @IBOutlet weak var contactInfoView: ContactInfoView!
     @IBOutlet weak var keyboardOnScrollView: UIScrollView!
     @IBOutlet weak var submitButton: UIButton!
+    var userDetails: ProfileViewModelProtocol = ProfileViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
+        contactInfoView.contactDetails = userDetails
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        userDetails.getUserProfileDetails()
+        contactInfoView.contactDetails = userDetails
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
+    //MARK:- IBAction methods
+    @IBAction func submitButtonAction(_ sender: UIButton) {
+        userDetails.updateUserProfileAPICallFor(completionHandler: { (isSuccess) in
+            Utility.showAlert(title: isSuccess ? "Success" : "Error", messageBody: isSuccess ? "Updated profile successfully." : "Looks like something went wrong. Please try again later.", andActions: [UIAlertAction(title: "OK", style: .default)])
+        })
+    }
 }
