@@ -18,16 +18,7 @@ class ContactInfoView: UIStackView {
     @IBOutlet weak var keyboardAccessoryView: UIToolbar!
     var activeTFTag = 0
     var datePicker: UIDatePicker!
-    var contactDetails: ContactInfoProtocol? {
-        didSet {
-            guard let profileData = contactDetails else { return }
-            firstNameTF.text = profileData.firstName
-            laseNameTf.text = profileData.lastName
-            emailTF.text = profileData.emailText
-            phoneTF.text = profileData.phoneText.formatPhoneNumber()
-            dobTF.text = profileData.dateOfBirth
-        }
-    }
+    var contactDetails: ContactInfoProtocol?
     
     //MARK:- Keyboard Accessory button actions
     @IBAction func previousButtonTapped(){
@@ -58,7 +49,7 @@ class ContactInfoView: UIStackView {
  }
     //MARK:- Text fields validations
     func areAllFieldsValid()-> Bool {
-       return contactDetails?.areContactInfoValid ?? false
+        return (phoneTF.filteredString?.isValidPhoneNumber() ?? false) && (emailTF.text?.isValidEmailID() ?? false) && !(firstNameTF.text?.isEmpty ?? true) && !(laseNameTf.text?.isEmpty ?? true) && !(dobTF.text?.isEmpty ?? true)
     }
     @IBAction func textFieldValueChanged(_ sender: CustomTextField) {
         contactDetails?.firstName = firstNameTF.text ?? ""
@@ -73,6 +64,14 @@ class ContactInfoView: UIStackView {
         self.datePicker.backgroundColor = UIColor.white
         self.datePicker.datePickerMode = UIDatePickerMode.date
         textField.inputView = self.datePicker
+    }
+    func updateContactInfoUIWith(details: ContactInfoProtocol) {
+        contactDetails = details
+        firstNameTF.text = contactDetails?.firstName
+        laseNameTf.text = contactDetails?.lastName
+        emailTF.text = contactDetails?.emailText
+        phoneTF.text = contactDetails?.phoneText.formatPhoneNumber()
+        dobTF.text = contactDetails?.dateOfBirth
     }
 }
 

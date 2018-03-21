@@ -17,12 +17,13 @@ class ProfileMVVMViewController: BaseViewController, KeyboardOnScrollView {
     override func viewDidLoad() {
         super.viewDidLoad()
         contactInfoView.contactDetails = userDetails
+        submitButton.layer.cornerRadius = submitButton.frame.height/2
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         userDetails.getUserProfileDetails()
-        contactInfoView.contactDetails = userDetails
+        contactInfoView.updateContactInfoUIWith(details: userDetails)
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

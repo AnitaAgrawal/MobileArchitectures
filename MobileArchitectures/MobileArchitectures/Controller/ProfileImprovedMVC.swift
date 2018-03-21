@@ -13,11 +13,7 @@ class ProfileImprovedMVC: BaseViewController, KeyboardOnScrollView {
     @IBOutlet weak var keyboardOnScrollView: UIScrollView!
     @IBOutlet weak var submitButton: UIButton!
     
-    var userDetails: UserProfile? {
-        didSet {
-            updateUserProfileUI()
-        }
-    }
+    var userDetails: UserProfile?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +26,7 @@ class ProfileImprovedMVC: BaseViewController, KeyboardOnScrollView {
                 return
             }
             self.userDetails = profileData
+            self.updateUserProfileUI()
         }
     }
     

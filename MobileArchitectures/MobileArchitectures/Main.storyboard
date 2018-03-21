@@ -174,7 +174,7 @@
                                             </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pZ4-Fj-Gyt">
                                                 <rect key="frame" x="20" y="476" width="335" height="45"/>
-                                                <color key="backgroundColor" red="0.88127690553665161" green="0.92835193872451782" blue="0.6689409613609314" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" red="0.45138680930000002" green="0.99309605359999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="VsG-fJ-NCO"/>
                                                 </constraints>
@@ -187,7 +187,7 @@
                                                 </connections>
                                             </button>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="pZ4-Fj-Gyt" secondAttribute="bottom" constant="50" id="3Iq-EH-1F6"/>
                                             <constraint firstAttribute="trailing" secondItem="BQk-iD-qPs" secondAttribute="trailing" constant="15" id="ChG-J1-Guy"/>
@@ -478,7 +478,7 @@
                                             </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z0p-u0-9If">
                                                 <rect key="frame" x="20" y="476" width="335" height="45"/>
-                                                <color key="backgroundColor" red="0.88127690550000004" green="0.92835193869999999" blue="0.66894096140000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" red="0.45138680930000002" green="0.99309605359999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="q4n-cz-9Pw"/>
                                                 </constraints>
@@ -486,9 +486,12 @@
                                                 <state key="normal" title="Submit">
                                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="submitButtonAction:" destination="Ykd-cj-Lnh" eventType="touchUpInside" id="ZEr-T9-ntj"/>
+                                                </connections>
                                             </button>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" red="0.47684186699999997" green="0.50480759139999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="z0p-u0-9If" firstAttribute="leading" secondItem="YF5-jp-x5d" secondAttribute="leading" constant="20" id="1eY-W9-1Jh"/>
                                             <constraint firstAttribute="bottom" secondItem="z0p-u0-9If" secondAttribute="bottom" constant="50" id="QmB-Wn-R9b"/>
@@ -677,7 +680,7 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Ajr-f3-6ot">
                                                         <rect key="frame" x="0.0" y="48" width="345" height="23"/>
                                                         <subviews>
-                                                            <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mm2-BE-Kqj" customClass="CustomTextField" customModule="MobileArchitectures" customModuleProvider="target">
+                                                            <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mm2-BE-Kqj" customClass="CustomTextField" customModule="MobileArchitectures" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="345" height="17"/>
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -688,7 +691,6 @@
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
                                                                 <connections>
-                                                                    <action selector="textFieldValueChanged:" destination="nGk-Ym-MLk" eventType="valueChanged" id="9ms-I4-HBb"/>
                                                                     <action selector="textFieldValueChanged:" destination="nGk-Ym-MLk" eventType="editingDidEnd" id="Oqb-Q4-52w"/>
                                                                     <action selector="textFieldValueChanged:" destination="nGk-Ym-MLk" eventType="editingChanged" id="fml-pR-yvS"/>
                                                                     <outlet property="delegate" destination="nGk-Ym-MLk" id="88p-VA-0Ky"/>
@@ -716,7 +718,6 @@
                                                                 <textInputTraits key="textInputTraits"/>
                                                                 <connections>
                                                                     <action selector="textFieldValueChanged:" destination="nGk-Ym-MLk" eventType="editingDidEnd" id="7gR-xg-b29"/>
-                                                                    <action selector="textFieldValueChanged:" destination="nGk-Ym-MLk" eventType="valueChanged" id="c8R-mf-yqR"/>
                                                                     <action selector="textFieldValueChanged:" destination="nGk-Ym-MLk" eventType="editingChanged" id="hbV-2a-I6h"/>
                                                                     <outlet property="delegate" destination="nGk-Ym-MLk" id="T1M-6s-RpI"/>
                                                                 </connections>
@@ -743,10 +744,12 @@
                                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next"/>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="string" keyPath="allowedCharacters" value="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890.%_@+-"/>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="maxLength">
+                                                                        <integer key="value" value="150"/>
+                                                                    </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
                                                                 <connections>
                                                                     <action selector="textFieldValueChanged:" destination="nGk-Ym-MLk" eventType="editingDidEnd" id="Hgh-gt-wfT"/>
-                                                                    <action selector="textFieldValueChanged:" destination="nGk-Ym-MLk" eventType="valueChanged" id="Mam-ES-DXk"/>
                                                                     <action selector="textFieldValueChanged:" destination="nGk-Ym-MLk" eventType="editingChanged" id="o2z-cu-i3i"/>
                                                                     <outlet property="delegate" destination="nGk-Ym-MLk" id="S4M-Y8-ccy"/>
                                                                 </connections>
@@ -802,13 +805,13 @@
                                                     <outlet property="emailTF" destination="d7a-ii-Aug" id="cAW-st-WKx"/>
                                                     <outlet property="firstNameTF" destination="2mk-4j-kcZ" id="LUL-51-WZX"/>
                                                     <outlet property="keyboardAccessoryView" destination="zed-FR-xhW" id="zsx-bm-HzN"/>
-                                                    <outlet property="laseNameTf" destination="mm2-BE-Kqj" id="m1D-Vb-4Nj"/>
+                                                    <outlet property="laseNameTf" destination="mm2-BE-Kqj" id="AMG-wF-3LR"/>
                                                     <outlet property="phoneTF" destination="d2Y-ZU-6VZ" id="JUA-hp-QqJ"/>
                                                 </connections>
                                             </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sr5-MI-Y2n">
                                                 <rect key="frame" x="20" y="476" width="335" height="45"/>
-                                                <color key="backgroundColor" red="0.88127690550000004" green="0.92835193869999999" blue="0.66894096140000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" red="0.47684186699999997" green="0.50480759139999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="8ai-7I-GZ2"/>
                                                 </constraints>
@@ -821,7 +824,7 @@
                                                 </connections>
                                             </button>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" red="0.83216959239999999" green="0.98548370600000001" blue="0.47333085539999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="sr5-MI-Y2n" firstAttribute="top" secondItem="nGk-Ym-MLk" secondAttribute="bottom" constant="51" id="0Kx-65-xB1"/>
                                             <constraint firstAttribute="trailing" secondItem="sr5-MI-Y2n" secondAttribute="trailing" constant="20" id="2Am-6o-AgR"/>

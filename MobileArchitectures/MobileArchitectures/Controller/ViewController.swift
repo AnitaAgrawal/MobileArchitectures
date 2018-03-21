@@ -38,14 +38,9 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         imageVC.delegate = self
         registerKeyboardNotification()
-        self.getUserProfileDetails { (profileDetails, error) in
-            guard let profileData = profileDetails else {
-                print(error ?? "Some error occurred")
-                return
-            }
-            self.userDetails = profileData
-        }
+        getUserData()
         profileButton.layer.cornerRadius = profileButton.frame.width/2
+        submitButton.layer.cornerRadius = submitButton.frame.height/2
     }
 
     override func didReceiveMemoryWarning() {
@@ -53,6 +48,15 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    func getUserData() {
+        self.getUserProfileDetails { (profileDetails, error) in
+            guard let profileData = profileDetails else {
+                print(error ?? "Some error occurred")
+                return
+            }
+            self.userDetails = profileData
+        }
+    }
     func updateUserProfileUI() {
         guard let profileData = userDetails else { return }
         firstNameTF.text = profileData.firstName
